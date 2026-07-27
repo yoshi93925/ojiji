@@ -1,15 +1,17 @@
-const myImage = document.querySelector("img");
+const toggleArea = document.querySelector('.image-toggle');
 
-if (myImage) {
-  myImage.onclick = () => {
-    const mySrc = myImage.getAttribute("src");
-    if (mySrc === "../images/img2.png") {
-      myImage.setAttribute("src", "../images/img.png");
+if (toggleArea) {
+  toggleArea.addEventListener('click', () => {
+    const img1 = toggleArea.querySelector('.img-1');
+    const img2 = toggleArea.querySelector('.img-2');
+
+    if (img1.style.display === 'none') {
+      img1.style.display = 'block';
+      img2.style.display = 'none';
     } else {
-      myImage.setAttribute("src", "../images/img2.png");
+      img1.style.display = 'none';
+      img2.style.display = 'block';
     }
-  };
+  });
 }
 
-let myButton = document.querySelector("button");
-let myHeading = document.querySelector("h1");

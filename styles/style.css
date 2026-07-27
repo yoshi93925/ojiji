@@ -5,9 +5,9 @@ html {
 
 body {
 width: 100%;
-max-width: 600x;
-box-sizing: border-box;
-  margin: 0 auto;
+max-width: 600px;
+
+  margin: 0 auto !important;
   background-color: rgb(255, 255, 255);
   padding: 0 20px 20px 20px;
   border: 3px solid #5b5b5b;
@@ -93,7 +93,6 @@ img {
     background-color: #fbc6ea92;
     color: #5b5b5b;
     text-align: center;
-    white-space: nowrap;     /* ★ 文字が絶対に折り返さず1行になる指定を追加 */
     box-sizing: border-box;  /* ★ パディングを含めた幅計算にする */
 }
 
@@ -214,12 +213,15 @@ img {
   margin: 20px 0;
 }
 
-/* 画像サイズが大きすぎる場合の調整（お好みで調整してください） */
+.image-balloon-container .image-toggle,
 .image-balloon-container img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 50%; /* 丸く切り抜く場合 */
+  width: 250px !important;
+  height: 250px !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 50% !important; /* 丸く切り抜く場合 */
+  flex-shrink: 0 !important;     /* 枠が横から潰されるのを防ぐ */
+  overflow: hidden !important;   /* 丸からはみ出た部分をカット */
 }
 
 /* 吹き出し本体のデザイン */
@@ -469,11 +471,12 @@ img {
 
 /* 名前とマークを中央寄せで横並びにする親要素 */
 .name-container {
+  flex-direction: column;
   display: flex;
   align-items: center;      /* 上下の中心を揃える */
   justify-content: center; /* ★横幅の中央に寄せる */
-  gap: 10px;                /* 名前とマークの間の隙間 */
-  margin-bottom: 15px;     /* 画像との間の余白 */
+  gap: 8px;                /* 名前とマークの間の隙間 */
+  margin-bottom: 0px;     /* 画像との間の余白 */
 }
 
 /* お名前のスタイル */
@@ -483,15 +486,26 @@ img {
   color: #5b5b5b;
 }
 
+
 .button-41 {
-    display: flex;
-    padding: .6em 0.5em;
-    border: none;
-    border-radius: 20px;
-    background-color: #e9b51b;
-    color: #fffdfd;
-    font-weight: 600;
-    font-size: 1;
+display: inline-flex;       /* 横並び＆上下中央揃え */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;        /* 改行防止 */
+  vertical-align: middle;     /* 名前の高さに合わせる */
+  margin-right: 6px;           /* 名前との間の余白 */
+  
+  height: 22px;               /* ★高さを同じ22pxに固定！ */
+  padding: 0 10px;            /* 左右の余白だけ指定 */
+  border: none;
+  border-radius: 12px;        /* 丸みの統一 */
+  color: #fffdfd;
+  font-weight: 600;
+  font-size: 11px;            /* 文字サイズを揃える */
+  line-height: 1;
+  background-color: #e9b51b;
+  color: #fffdfd;
+
 }
 
 .button-41:hover {
@@ -637,8 +651,9 @@ img {
 
   /* スマホの時の画像サイズ */
   .image-balloon-container img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
+    
   }
 
   /* 3. 吹き出しの三角（しっぽ）を「上中央」に変更 */
@@ -664,7 +679,6 @@ img {
 
   /* 4. ピンクの見出しの折返し調整 */
   .heading-12 {
-    white-space: normal !important;
     font-size: 16px;
     word-break: break-all;
   }
@@ -674,4 +688,226 @@ img {
     font-size: 36px;
   }
   
+}
+.image-toggle img {
+  cursor: pointer; /* タップできることが分かりやすいように */
+}
+.button-42 {
+display: inline-flex;       /* 横並び＆上下中央揃え */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;        /* 改行防止 */
+  vertical-align: middle;     /* 名前の高さに合わせる */
+  margin-right: 6px;           /* 名前との間の余白 */
+  
+  height: 22px;               /* ★高さを同じ22pxに固定！ */
+  padding: 0 10px;            /* 左右の余白だけ指定 */
+  border: none;
+  border-radius: 12px;        /* 丸みの統一 */
+  color: #fffdfd;
+  font-weight: 600;
+  font-size: 10px;            /* 文字サイズを揃える */
+  line-height: 1;
+    background-color: #ef94d1;
+    color: #fffdfd;
+}
+
+.button-42:hover {
+    animation: anima-button-42 2s linear infinite;
+}
+
+@keyframes anima-button-42 {
+    7% {
+        transform: translateY(-15px);
+    }
+    15% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-7px);
+    }
+    25% {
+        transform: translateY(0);
+    }
+}
+
+/*テーブル*/
+.design16 {
+ width: 100%;
+ text-align: center;
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+.design16 th {
+ padding: 10px;
+ border: solid 1px #ffffff;
+}
+.design16 th:nth-child(1) {
+ background: #abf3c3;
+}
+.design16 th:nth-child(2) {
+ background: #fed330;
+}
+.design16 th:nth-child(3) {
+ background: #26de81;
+}
+.design16 td {
+ padding: 10px;
+ border: solid 1px #ffffff;
+}
+.design16 td:nth-child(1) {
+ background: #fec49866;
+}
+.design16 td:nth-child(2) {
+ background: #ede21038;
+}
+.design16 td:nth-child(3) {
+ background: #70e9ac;
+}
+
+/* 歪ませずに丸くする */
+td img,
+th img {
+  width: 250px;           /* お好みの画像幅（例: 80px 〜 150px） */
+  height: 250px;          /* 幅と同じ数値にする */
+  aspect-ratio: 1 / 1;    /* 縦横比 1:1（正方形）を維持 */
+  object-fit: cover;      /* ★これが最重要！画像を歪ませずに枠内に収める */
+  border-radius: 50%;     /* 丸くしたい場合（不要なら消してください） */
+  display: block;
+  margin: 0 auto;         /* セルの中中央に配置 */
+}
+/* --- おじ一覧テーブルのかわいいカード風デザイン --- */
+table {
+  width: 100%;
+  border-collapse: separate;  /* セルの隙間を空けてカード状にする */
+  border-spacing: 15px;       /* カード同士の間隔 */
+  margin-top: 10px;
+}
+
+/* 各セルを角丸のふんわりカードにする */
+td {
+  background-color: #fffafc;       /* ほんのり甘いミルキーピンクの背景 */
+  border: 2px solid #f9cbe0;       /* かわいいピンクの枠線 */
+  border-radius: 18px;             /* 角をしっかり丸く */
+  padding: 20px 10px;              /* 内側の余白 */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(246, 188, 246, 0.2); /* ほんのり浮き出るピンクの影 */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* ホバー（タップ）したときに少し持ち上がるアニメーション */
+td:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(246, 188, 246, 0.4);
+}
+
+/* カード内のお名前部分のデザイン */
+td a,
+td {
+  color: #5b5b5b;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* 写真のまわりに白いフチと影をつける */
+td img,
+td .image-toggle {
+  border: 4px solid #ffffff !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px !important;
+}
+
+/*テーブル*/
+.design17 {
+ width: 100%;
+ text-align: center;
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+.design17 th {
+ padding: 10px;
+ border: solid 1px #ffffff;
+}
+.design17 th:nth-child(1) {
+ background: #abf3c3;
+}
+.design17 th:nth-child(2) {
+ background: #fed330;
+}
+.design17 th:nth-child(3) {
+ background: #26de81;
+}
+.design17 td {
+ padding: 10px;
+ border: solid 1px #ffffff;
+}
+.design17 td:nth-child(1) {
+ background: #a998fe66;
+}
+.design17 td:nth-child(2) {
+ background: #ed103538;
+}
+.design17 td:nth-child(3) {
+ background: #70e9ac;
+}
+
+/* カード（td）を基準位置にする */
+td {
+  position: relative; /* ★これが必要！ */
+}
+
+/* 名前とマークの並び */
+.name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 名前をカードの中央に配置 */
+  width: 100%;
+  position: relative;
+}
+
+/* マーク（PREMIUM / 新人）を左端に固定する */
+table .button-41 {
+  position: absolute !important; /* 絶対配置にして浮かす */
+  left: 25px !important;         /* 左端からの距離 */
+  margin-left: 0 !important;
+}
+table .button-42 {
+  position: absolute !important; /* 絶対配置にして浮かす */
+  left: 40px !important;         /* 左端からの距離 */
+  margin-left: 0 !important;
+}
+/* ★ 詳細ページのクラス（.name-container や .profile-name 周り）では位置を元に戻す */
+.name-container .button-41,
+.name-container .button-42 {
+  position: static !important; /* 絶対配置を解除して通常並びにする */
+  margin-left: 8px !important; /* 名前の右側にちょっとだけ隙間を空ける */
+}
+
+/* --- 1. 写真をしっかり正円（まんまる）に固定する --- */
+table img,
+table .image-toggle,
+table .image-toggle img {
+  width: 140px !important;       /* ★表示サイズに合わせて数値を調整してください */
+  height: 140px !important;      /* 横幅と同じにして正方形にする */
+  aspect-ratio: 1 / 1 !important;/* 縦横比 1:1 に固定 */
+  object-fit: cover !important;  /* 写真を歪ませない */
+  border-radius: 50% !important; /* 正円にする */
+  margin: 0 auto 10px !important;
+}
+
+/* --- 2. マークと名前の間に少し間隔をあける --- */
+table .name-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important; /* ★ここでマークと名前の間に『半角スペース分』の隙間を作る */
+}
+
+/* 一覧での絶対配置を解除して自然な横並びにする */
+table .button-41,
+table .button-42 {
+  position: static !important;
+  left: auto !important;
+  margin: 0 !important;
 }

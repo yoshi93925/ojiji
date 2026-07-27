@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>初めてのフォーム</title>
+  </head>
+  <body>
+    <form action="./submit_page" method="get">
+      <h2>ニュースレターを購読</h2>
+      <p>
+        <label for="name">名前（必須）:</label>
+        <input type="text" name="name" id="name" required />
+      </p>
+      <p>
+        <label for="email">メールアドレス（必須）:</label>
+        <input type="email" name="email" id="email" required />
+      </p>
+      <p>
+        <button>登録する！</button>
+      </p>
+    </form>
+  
+    <form action="./payment_page" method="get">
+      <h2>交流会に申し込む</h2>
+      <fieldset>
+        <legend>ホテルの部屋のタイプを選択:</legend>
+        <div>
+          <input
+            type="radio"
+            id="hotelChoice1"
+            name="hotel"
+            value="economy"
+            checked />
+          <label for="hotelChoice1">エコノミー (+$0)</label>
+
+          <input type="radio" id="hotelChoice2" name="hotel" value="superior" />
+          <label for="hotelChoice2">上級 (+$50)</label>
+
+          <input
+            type="radio"
+            id="hotelChoice3"
+            name="hotel"
+            value="penthouse"
+            disabled />
+          <label for="hotelChoice3">ペントハウス (+$150)</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>参加したいクラス:</legend>
+        <div>
+          <input type="checkbox" id="yoga" name="yoga" />
+          <label for="yoga">ヨガ (+$10)</label>
+
+          <input type="checkbox" id="coffee" name="coffee" />
+          <label for="coffee">コーヒーロースト (+$20)</label>
+
+          <input type="checkbox" id="balloon" name="balloon" />
+          <label for="balloon">動物のバルーンアート (+$5)</label>
+        </div>
+      </fieldset>
+      <p>
+        <label for="transport">ここまでの交通手段:</label>
+        <select name="transport" id="transport">
+          <option value="">--選択してください--</option>
+          <option value="plane">航空機</option>
+          <option value="bike">バイク</option>
+          <option value="walk">徒歩</option>
+          <option value="bus">バス</option>
+          <option value="train">鉄道</option>
+          <option value="jetPack">ジェットパック</option>
+        </select>
+      </p>
+      <p>
+        <label for="comments">ほかにコメントはありますか:</label>
+        <textarea id="comments" name="comments" rows="5" cols="33"></textarea>
+      </p>
+      <p>
+        <button>支払いを継続</button>
+      </p>
+    </form>
+  </body>
+</html>

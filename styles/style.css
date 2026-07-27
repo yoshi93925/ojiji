@@ -613,3 +613,47 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* ==========================================
+   スマホ（画面幅 600px 以下）用の崩れ防止調整
+   ========================================== */
+@media screen and (max-width: 600px) {
+  
+  /* 1. 全体の枠幅・パディング調整 */
+  body {
+    padding: 0 10px 20px 10px; /* 左右の余白を少し小さくして表示エリアを確保 */
+    border-left: none;         /* スマホでは左右の太い枠線を消すとスッキリします（お好みで） */
+    border-right: none;
+  }
+
+  /* 2. 画像と吹き出しを横並びから「縦並び」に変更 */
+  .image-balloon-container {
+    flex-direction: column; /* 縦に並べる */
+    align-items: center;
+    gap: 15px;
+  }
+
+  /* スマホの時は画像を少し小さくする */
+  .image-balloon-container img {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* 吹き出しの三角を下向きに変更（縦並び用） */
+  .balloon::before,
+  .balloon::after {
+    display: none; /* スマホでは崩れやすいため一度三角を非表示に（シンプルで見やすくなります） */
+  }
+
+  /* 3. ピンクの見出し（ heading-12 ）の折返し許可 */
+  .heading-12 {
+    white-space: normal !important; /* スマホでは長い文字を折り返せるようにする */
+    font-size: 16px;                 /* スマホ用に少し文字を小さく */
+    word-break: break-all;
+  }
+
+  /* 4. h1の見出しサイズ調整 */
+  h1 {
+    font-size: 36px; /* PC用の60pxだと大きすぎるため小さく調整 */
+  }
+  
+}

@@ -12,6 +12,7 @@ body {
 
   /*フォントの指定*/
   font-family: "Kaisei Decol", serif;
+  font-size: 18px;
 }
 
 h1 {
@@ -85,7 +86,6 @@ img {
 .heading-12 {
     position: relative;
     width: 100%;             /* ★ 290px から 100%（または 450px など）に変更して横幅を広げる */
-    max-width: 480px;        /* ★ 枠内に綺麗に収まる最大の幅を指定 */
     margin: 0 auto;
     padding: .5em .7em;
     background-color: #fbc6ea92;
@@ -95,15 +95,7 @@ img {
     box-sizing: border-box;  /* ★ パディングを含めた幅計算にする */
 }
 
-.heading-12::before,
-.heading-12::after {
-    position: absolute;
-    bottom: -10px;
-    z-index: -1;
-    border-style: solid;
-    border-color: #f9abf9;
-    content: '';
-}
+
 
 .heading-12::before {
     left: -30px;
@@ -494,7 +486,7 @@ img {
     padding: .6em 0.5em;
     border: none;
     border-radius: 20px;
-    background-color: #f7ace3;
+    background-color: #e9b51b;
     color: #fffdfd;
     font-weight: 600;
     font-size: 1;

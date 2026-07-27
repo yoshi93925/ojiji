@@ -616,44 +616,62 @@ img {
 /* ==========================================
    スマホ（画面幅 600px 以下）用の崩れ防止調整
    ========================================== */
+/* ==========================================
+   スマホ（画面幅 600px 以下）用の調整
+   ========================================== */
 @media screen and (max-width: 600px) {
   
   /* 1. 全体の枠幅・パディング調整 */
   body {
-    padding: 0 10px 20px 10px; /* 左右の余白を少し小さくして表示エリアを確保 */
-    border-left: none;         /* スマホでは左右の太い枠線を消すとスッキリします（お好みで） */
+    padding: 0 10px 20px 10px;
+    border-left: none;
     border-right: none;
   }
 
-  /* 2. 画像と吹き出しを横並びから「縦並び」に変更 */
+  /* 2. 画像と吹き出しを「縦並び」に変更 */
   .image-balloon-container {
-    flex-direction: column; /* 縦に並べる */
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
   }
 
-  /* スマホの時は画像を少し小さくする */
+  /* スマホの時の画像サイズ */
   .image-balloon-container img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
 
-  /* 吹き出しの三角を下向きに変更（縦並び用） */
-  .balloon::before,
+  /* 3. 吹き出しの三角（しっぽ）を「上中央」に変更 */
+  /* 外側の枠線用三角 */
+  .balloon::before {
+    top: -24px;
+    left: 50%;
+    margin-top: 0;
+    margin-left: -12px;
+    border-color: transparent transparent #f6bcf6 transparent; /* 下側だけ枠線色 */
+    border-width: 12px;
+  }
+
+  /* 内側の白い背景用三角 */
   .balloon::after {
-    display: none; /* スマホでは崩れやすいため一度三角を非表示に（シンプルで見やすくなります） */
+    top: -20px;
+    left: 50%;
+    margin-top: 0;
+    margin-left: -10px;
+    border-color: transparent transparent #ffffff transparent; /* 下側だけ白色 */
+    border-width: 10px;
   }
 
-  /* 3. ピンクの見出し（ heading-12 ）の折返し許可 */
+  /* 4. ピンクの見出しの折返し調整 */
   .heading-12 {
-    white-space: normal !important; /* スマホでは長い文字を折り返せるようにする */
-    font-size: 16px;                 /* スマホ用に少し文字を小さく */
+    white-space: normal !important;
+    font-size: 16px;
     word-break: break-all;
   }
 
-  /* 4. h1の見出しサイズ調整 */
+  /* 5. h1の見出しサイズ調整 */
   h1 {
-    font-size: 36px; /* PC用の60pxだと大きすぎるため小さく調整 */
+    font-size: 36px;
   }
   
 }
